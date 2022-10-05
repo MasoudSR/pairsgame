@@ -1,0 +1,31 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+background-color: rgb(102, 152, 152);
+flex-direction: column;
+align-items: center;
+}
+
+header h1{
+    color: aliceblue;
+    margin: 30px;
+}
+
+.cards{
+    display: grid;
+    grid-template-columns: repeat(5 , 100px);
+    gap: 20px;
+}
+
+.card{
+    width: 100px;
+    height: 200px;
+    background-image: linear-gradient(rgb(132, 132, 241),rgb(185, 125, 125));
+    border-radius: 10px;
+    box-shadow: 0 0 5px gray;
+}
