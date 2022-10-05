@@ -1,6 +1,4 @@
-const cards = document.querySelectorAll(".card");
-
-cards.forEach((card) => {
+document.querySelectorAll(".card").forEach((card) => {
 	card.addEventListener("click", clickHandler);
 });
 
@@ -25,3 +23,19 @@ function clickHandler(event) {
 		}
 	}
 }
+
+function cardGenerator(){
+    const cardsPics = [1,2,3,4,5]
+    const cards = []
+    cardsPics.forEach(pic=>{
+        cards.push(`<div class="card"><p>${pic}</p></div>`)
+        cards.push(`<div class="card"><p>${pic}</p></div>`)
+    })
+    shuffle(cards)
+}
+
+function shuffle(cards){
+    let cardsIndex = cards.length
+}
+
+cardGenerator()
