@@ -27,6 +27,16 @@ function cardGenerator() {
 	});
 }
 
+function shuffle(cards) {
+	let currentIndex = cards.length;
+	let randomIndex;
+	while (currentIndex != 0) {
+		randomIndex = Math.floor(Math.random() * currentIndex);
+		currentIndex--;
+		[cards[currentIndex], cards[randomIndex]] = [cards[randomIndex], cards[currentIndex]];
+	}
+}
+
 let selected = "";
 
 function clickHandler(event) {
@@ -47,16 +57,6 @@ function clickHandler(event) {
 			}, 1000);
 			selected = "";
 		}
-	}
-}
-
-function shuffle(cards) {
-	let currentIndex = cards.length;
-	let randomIndex;
-	while (currentIndex != 0) {
-		randomIndex = Math.floor(Math.random() * currentIndex);
-		currentIndex--;
-		[cards[currentIndex], cards[randomIndex]] = [cards[randomIndex], cards[currentIndex]];
 	}
 }
 
