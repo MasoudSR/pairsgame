@@ -7,18 +7,24 @@ function startGame() {
 }
 
 function cardGenerator() {
-	const cardsPics = [1, 2, 3, 4, 5];
+	const cardsPics = [
+		"/images/troll black3.png",
+		"/images/troll crazy.png",
+		"/images/troll phone.png",
+		"/images/trollsadbed1.png",
+		"/images/trollthug2.png",
+	];
 	const cards = [];
 	cardsPics.forEach((pic, index) => {
 		const card = document.createElement("div");
 		card.classList.add("card");
-		card.innerHTML = `<p>${pic}</p>`;
+		card.innerHTML = `<img src="${pic}" alt="${pic}"></img>`;
 		cards.push(card);
 	});
 	cardsPics.forEach((pic, index) => {
 		const card = document.createElement("div");
 		card.classList.add("card");
-		card.innerHTML = `<p>${pic}</p>`;
+		card.innerHTML = `<img src="${pic}" alt="${pic}"></img>`;
 		cards.push(card);
 	});
 	shuffle(cards);
@@ -46,7 +52,7 @@ function clickHandler(event) {
 		selected = event.target;
 	} else {
 		// second card chosen
-		if (selected.innerText === event.target.innerText) {
+		if (selected.innerHTML === event.target.innerHTML) {
 			correctChoice(event);
 		} else {
 			wrongChoice(event);

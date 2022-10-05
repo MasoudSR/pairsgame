@@ -28,8 +28,13 @@ header h1 {
     background-image: linear-gradient(rgb(132, 132, 241), rgb(185, 125, 125));
     border-radius: 10px;
     box-shadow: 0 0 5px gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.card p {
+.card img {
     visibility: hidden;
+    width: 100px;
+    height: 100px;
 }
