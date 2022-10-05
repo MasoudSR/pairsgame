@@ -12,17 +12,16 @@ function clickHandler(event) {
 		selected = event.target;
 	} else {
 		if (selected.innerText === event.target.innerText) {
-			console.log("yeki bood");
             event.target.style.pointerEvents="none"
             selected.style.pointerEvents="none"
 			selected = "";
 		} else {
-			console.log("yeki nabood");
+            const temp = selected
             setTimeout(()=>{
                 event.target.childNodes[0].style.visibility="hidden"
-                selected.childNodes[0].style.visibility="hidden"
-                selected = "";
+                temp.childNodes[0].style.visibility="hidden"
             },1000)
+            selected = "";
 		}
 	}
 }
