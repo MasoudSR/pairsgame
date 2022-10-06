@@ -1,4 +1,20 @@
+let timer = 30
+setInterval(()=>{
+timer--
+document.querySelector(".timer").innerText=timer
+timer===0 && loseHandler()
+},1000)
+
+function loseHandler(){
+	alert("time out you lose")
+	startGame()
+}
+
+let correctNumber = 0;
+
 function startGame() {
+	timer = 30
+	correctNumber = 0;
 	document.querySelector(".cards").innerText = "";
 	cardGenerator();
 	document.querySelectorAll(".card").forEach((card) => {
@@ -61,7 +77,6 @@ function clickHandler(event) {
 	}
 }
 
-let correctNumber = 0;
 
 function correctChoice(event, secondChoice) {
 	secondChoice.style.pointerEvents = "none";
@@ -69,13 +84,11 @@ function correctChoice(event, secondChoice) {
 	firstChoice = "";
 	correctNumber++;
 	correctNumber === 5 && winHandler();
-	console.log(correctNumber);
 }
 
 function winHandler() {
 	setTimeout(() => {
-		alert("youwin");
-		correctNumber = 0;
+		alert("you win");
 		startGame();
 	}, 500);
 }
