@@ -1,11 +1,7 @@
-function startGame() {
-	startTimer();
-	correctNumber = 0;
+function restartGame() {
 	document.querySelector(".cards").innerText = "";
-	cardGenerator();
-	document.querySelectorAll(".card").forEach((card) => {
-		card.addEventListener("click", clickHandler);
-	});
+	cardGenerator()
+	gameStarted = false
 }
 
 function startTimer() {
@@ -43,6 +39,9 @@ function cardGenerator() {
 	cards.forEach((card) => {
 		document.querySelector(".cards").appendChild(card);
 	});
+	document.querySelectorAll(".card").forEach((card) => {
+		card.addEventListener("click", clickHandler);
+	});
 }
 
 function shuffle(cards) {
@@ -55,9 +54,15 @@ function shuffle(cards) {
 	}
 }
 
+let gameStarted = false
 let firstChoice = "";
 
 function clickHandler(event) {
+	if (!gameStarted){
+		gameStarted = true
+		correctNumber = 0;
+		startTimer()
+	}
 	event.currentTarget.classList.add("flip");
 	if (firstChoice.length === 0) {
 		// first card chosen
@@ -87,7 +92,7 @@ function winHandler() {
 	clearInterval(timer);
 	setTimeout(() => {
 		alert("you win");
-		startGame();
+		restartGame();
 	}, 500);
 }
 
@@ -103,7 +108,9 @@ function wrongChoice(secondChoice) {
 function loseHandler() {
 	clearInterval(timer);
 	alert("time out you lose");
-	startGame();
+	restartGame();
 }
 
-startGame();
+
+cardGenerator();
+// startGame();
