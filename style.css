@@ -9,6 +9,7 @@ body {
     background-color: rgb(102, 152, 152);
     flex-direction: column;
     align-items: center;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 header h1 {
@@ -18,14 +19,21 @@ header h1 {
 
 nav {
     display: flex;
+    width: 100%;
+    padding: 10px;
+    background-color: antiquewhite;
+    justify-content: center;
+}
 
+nav h3 {
+    padding: 10px;
 }
 
 .cards {
     display: grid;
     grid-template-columns: repeat(5, 100px);
     gap: 20px;
-
+    margin-top: 20px;
 }
 
 .card {
