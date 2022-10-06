@@ -18,13 +18,13 @@ function cardGenerator() {
 	cardsPics.forEach((pic, index) => {
 		const card = document.createElement("div");
 		card.classList.add("card");
-		card.innerHTML = `<img src="${pic}" alt="${pic}"></img>`;
+		card.innerHTML = `<div class="front"></div><div class="back"><img src="${pic}" alt="${pic}"></div>`;
 		cards.push(card);
 	});
 	cardsPics.forEach((pic, index) => {
 		const card = document.createElement("div");
 		card.classList.add("card");
-		card.innerHTML = `<img src="${pic}" alt="${pic}"></img>`;
+		card.innerHTML = `<div class="front"></div><div class="back"><img src="${pic}" alt="${pic}"></div>`;
 		cards.push(card);
 	});
 	shuffle(cards);
@@ -43,36 +43,38 @@ function shuffle(cards) {
 	}
 }
 
-let selected = "";
+let firstChoice = "";
 
 function clickHandler(event) {
-	event.target.childNodes[0].style.visibility = "visible";
-	if (selected.length === 0) {
+	// transform: rotateY(180deg);
+	event.currentTarget.classList.add("flip");
+	if (firstChoice.length === 0) {
 		// first card chosen
-		selected = event.target;
+		firstChoice = event.currentTarget;
 	} else {
 		// second card chosen
-		if (selected.innerHTML === event.target.innerHTML) {
-			correctChoice(event);
+		let secondChoice = event.currentTarget;
+		if (firstChoice.innerHTML === secondChoice.innerHTML) {
+			correctChoice(event, secondChoice);
 		} else {
-			wrongChoice(event);
+			wrongChoice(event, secondChoice);
 		}
 	}
 }
 
-function correctChoice(event) {
-	event.target.style.pointerEvents = "none";
-	selected.style.pointerEvents = "none";
-	selected = "";
+function correctChoice(event, secondChoice) {
+	secondChoice.style.pointerEvents = "none";
+	firstChoice.style.pointerEvents = "none";
+	firstChoice = "";
 }
 
-function wrongChoice(event) {
-	const temp = selected;
+function wrongChoice(event, secondChoice) {
+	const temp = firstChoice;
 	setTimeout(() => {
-		event.target.childNodes[0].style.visibility = "hidden";
-		temp.childNodes[0].style.visibility = "hidden";
+		secondChoice.classList.remove("flip");
+		temp.classList.remove("flip");
 	}, 1000);
-	selected = "";
+	firstChoice = "";
 }
 
 startGame();
