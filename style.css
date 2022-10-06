@@ -11,16 +11,14 @@ body {
     align-items: center;
 }
 
-header{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 30px;
-}
-
 header h1 {
     color: aliceblue;
-    margin: 30px;
+    margin: 50px;
+}
+
+nav{
+    display: flex;
+    
 }
 
 .cards {
@@ -43,9 +41,6 @@ header h1 {
     perspective: 1000px;
 }
 
-/* .card:hover {
-    transform: rotateY(180deg);
-} */
 
 .flip {
     transform: rotateY(180deg);

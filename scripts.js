@@ -1,25 +1,20 @@
-let timer = 30
-setInterval(()=>{
-timer--
-document.querySelector(".timer").innerText=timer
-timer===0 && loseHandler()
-},1000)
-
-function loseHandler(){
-	alert("time out you lose")
-	startGame()
-}
-
-let correctNumber = 0;
-
 function startGame() {
-	timer = 30
+	let time = 30;
+	timer(time);
 	correctNumber = 0;
 	document.querySelector(".cards").innerText = "";
 	cardGenerator();
 	document.querySelectorAll(".card").forEach((card) => {
 		card.addEventListener("click", clickHandler);
 	});
+}
+
+function timer(time) {
+	const timer = setInterval(() => {
+		time--;
+		document.querySelector(".timer").innerText = time;
+		time === 0 && loseHandler(timer);
+	}, 1000);
 }
 
 function cardGenerator() {
@@ -70,20 +65,22 @@ function clickHandler(event) {
 		// second card chosen
 		let secondChoice = event.currentTarget;
 		if (firstChoice.innerHTML === secondChoice.innerHTML) {
-			correctChoice(event, secondChoice);
+			correctChoice(secondChoice);
 		} else {
-			wrongChoice(event, secondChoice);
+			wrongChoice(secondChoice);
 		}
 	}
 }
 
+let correctNumber = 0;
 
-function correctChoice(event, secondChoice) {
+function correctChoice(secondChoice) {
 	secondChoice.style.pointerEvents = "none";
 	firstChoice.style.pointerEvents = "none";
 	firstChoice = "";
 	correctNumber++;
 	correctNumber === 5 && winHandler();
+	console.log(correctNumber);
 }
 
 function winHandler() {
@@ -93,13 +90,19 @@ function winHandler() {
 	}, 500);
 }
 
-function wrongChoice(event, secondChoice) {
+function wrongChoice(secondChoice) {
 	const temp = firstChoice;
 	setTimeout(() => {
 		secondChoice.classList.remove("flip");
 		temp.classList.remove("flip");
 	}, 800);
 	firstChoice = "";
+}
+
+function loseHandler(timer) {
+	clearInterval(timer);
+	alert("time out you lose");
+	startGame();
 }
 
 startGame();
