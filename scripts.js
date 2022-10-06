@@ -1,7 +1,7 @@
 function restartGame() {
 	document.querySelector(".cards").innerText = "";
-	cardGenerator()
-	gameStarted = false
+	cardGenerator();
+	gameStarted = false;
 }
 
 function startTimer() {
@@ -54,14 +54,14 @@ function shuffle(cards) {
 	}
 }
 
-let gameStarted = false
+let gameStarted = false;
 let firstChoice = "";
 
 function clickHandler(event) {
-	if (!gameStarted){
-		gameStarted = true
+	if (!gameStarted) {
+		gameStarted = true;
 		correctNumber = 0;
-		startTimer()
+		startTimer();
 	}
 	event.currentTarget.classList.add("flip");
 	if (firstChoice.length === 0) {
@@ -110,7 +110,6 @@ function loseHandler() {
 	alert("time out you lose");
 	restartGame();
 }
-
 
 cardGenerator();
 // startGame();
