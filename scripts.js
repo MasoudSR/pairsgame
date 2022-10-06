@@ -46,7 +46,6 @@ function shuffle(cards) {
 let firstChoice = "";
 
 function clickHandler(event) {
-	// transform: rotateY(180deg);
 	event.currentTarget.classList.add("flip");
 	if (firstChoice.length === 0) {
 		// first card chosen
@@ -62,10 +61,23 @@ function clickHandler(event) {
 	}
 }
 
+let correctNumber = 0;
+
 function correctChoice(event, secondChoice) {
 	secondChoice.style.pointerEvents = "none";
 	firstChoice.style.pointerEvents = "none";
 	firstChoice = "";
+	correctNumber++;
+	correctNumber === 5 && winHandler();
+	console.log(correctNumber);
+}
+
+function winHandler() {
+	setTimeout(() => {
+		alert("youwin");
+		correctNumber = 0;
+		startGame();
+	}, 500);
 }
 
 function wrongChoice(event, secondChoice) {
@@ -73,7 +85,7 @@ function wrongChoice(event, secondChoice) {
 	setTimeout(() => {
 		secondChoice.classList.remove("flip");
 		temp.classList.remove("flip");
-	}, 1000);
+	}, 800);
 	firstChoice = "";
 }
 
