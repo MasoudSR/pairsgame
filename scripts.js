@@ -1,6 +1,5 @@
 function startGame() {
-	let time = 30;
-	timer(time);
+	startTimer();
 	correctNumber = 0;
 	document.querySelector(".cards").innerText = "";
 	cardGenerator();
@@ -9,11 +8,13 @@ function startGame() {
 	});
 }
 
-function timer(time) {
-	const timer = setInterval(() => {
+function startTimer() {
+	let time = 30;
+	timer = setInterval(() => {
 		time--;
 		document.querySelector(".timer").innerText = time;
 		time === 0 && loseHandler(timer);
+		correctNumber === 5 && clearInterval();
 	}, 1000);
 }
 
@@ -80,10 +81,10 @@ function correctChoice(secondChoice) {
 	firstChoice = "";
 	correctNumber++;
 	correctNumber === 5 && winHandler();
-	console.log(correctNumber);
 }
 
 function winHandler() {
+	clearInterval(timer);
 	setTimeout(() => {
 		alert("you win");
 		startGame();
@@ -99,7 +100,7 @@ function wrongChoice(secondChoice) {
 	firstChoice = "";
 }
 
-function loseHandler(timer) {
+function loseHandler() {
 	clearInterval(timer);
 	alert("time out you lose");
 	startGame();
