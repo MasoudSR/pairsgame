@@ -92,3 +92,20 @@ nav h3 {
         height: 250px;
     }
 }
+
+@media (min-width:900px) {
+    .cards {
+        gap: 20px;
+    }
+
+    .card {
+        width: 12vw;
+        height: 250px;
+    }
+}
+
+@media(min-width:1200px) {
+    .card {
+        width: 150px;
+    }
+}
